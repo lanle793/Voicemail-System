@@ -1,0 +1,47 @@
+import java.awt.event.*;
+import javax.swing.*;
+
+
+public class VoicemailSystem {
+
+	public static void main(String[] args) {
+		systemAccess();
+
+	}
+	
+	public static void systemAccess(){
+		final JFrame access = new JFrame("Voicemail System");
+		access.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);		
+		//access.setLayout(new GridLayout(1,2));
+		access.setSize(450, 300);
+		access.setLocationRelativeTo(null);
+		access.setVisible(true);
+		
+		JPanel buttonPane = new JPanel();
+		buttonPane.setBorder(BorderFactory.createTitledBorder("Choose from Options"));
+		JButton owner = new JButton("Log In Voicemail");
+		JButton sender = new JButton("Send a Message");
+		sender.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				SenderCtrl senderCtrl = new SenderCtrl();
+				access.dispose();
+			}
+			
+		});
+		owner.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				OwnerCtrl ownerCtrl = new OwnerCtrl();
+				access.dispose();
+			}
+			
+		});
+		
+		buttonPane.add(owner);
+		buttonPane.add(sender);
+		access.add(buttonPane);
+		access.pack();
+	}
+
+}

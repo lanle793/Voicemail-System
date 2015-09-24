@@ -1,0 +1,1 @@
+You may retrieve messages, change the greeting message, or change the passcode
